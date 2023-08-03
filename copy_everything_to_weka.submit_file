@@ -1,0 +1,33 @@
+####################
+#
+# Example data copy job for HTCondor
+#
+####################
+
+# --------------------------------------------
+# Executable and its arguments
+executable    = /usr/bin/rsync
+arguments     = -a -v /vol/research/path/to/data_source /mnt/fast/nobackup/path/to/data_destination
+environment   = "mount=/vol/research/path/to/data_source"
+
+# --------------------------------------------
+# Input, Output and Log files
+log    = $(cluster).$(process).log
+output = $(cluster).$(process).out
+error  = $(cluster).$(process).error
+
+# -------------------------------------
+# Requirements for the Job
+requirements = HasWeka && HasStornext
+
+# --------------------------------------
+# Resource requirements
+request_CPUs     = 1
+request_memory = 1028
+
++CanCheckpoint = true
++JobRunTime = 12
+
+# -----------------------------------
+# Queue commands
+queue 1
