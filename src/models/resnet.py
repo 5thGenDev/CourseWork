@@ -13,6 +13,10 @@ __all__ = [
     "resnet34_fc512",
     "resnet50",
     "resnet50_fc512",
+    "resnet101",
+    "resnet101_fc512",
+    "resnet152",
+    "resnet152_fc512",
 ]
 
 model_urls = {
@@ -359,6 +363,70 @@ def resnet50_fc512(num_classes, loss={"xent"}, pretrained=True, **kwargs):
         loss=loss,
         block=Bottleneck,
         layers=[3, 4, 6, 3],
+        last_stride=1,
+        fc_dims=[512],
+        dropout_p=None,
+        **kwargs,
+    )
+    if pretrained:
+        init_pretrained_weights(model, model_urls["resnet50"])
+    return model
+
+
+def resnet101(num_classes, loss={"xent"}, pretrained=True, **kwargs):
+    model = ResNet(
+        num_classes=num_classes,
+        loss=loss,
+        block=Bottleneck,
+        layers=[3, 4, 23, 3],
+        last_stride=2,
+        fc_dims=None,
+        dropout_p=None,
+        **kwargs,
+    )
+    if pretrained:
+        init_pretrained_weights(model, model_urls["resnet50"])
+    return model
+
+
+def resnet101_fc512(num_classes, loss={"xent"}, pretrained=True, **kwargs):
+    model = ResNet(
+        num_classes=num_classes,
+        loss=loss,
+        block=Bottleneck,
+        layers=[3, 4, 23, 3],
+        last_stride=1,
+        fc_dims=[512],
+        dropout_p=None,
+        **kwargs,
+    )
+    if pretrained:
+        init_pretrained_weights(model, model_urls["resnet50"])
+    return model
+
+
+def resnet152(num_classes, loss={"xent"}, pretrained=True, **kwargs):
+    model = ResNet(
+        num_classes=num_classes,
+        loss=loss,
+        block=Bottleneck,
+        layers=[3, 8, 36, 3],
+        last_stride=2,
+        fc_dims=None,
+        dropout_p=None,
+        **kwargs,
+    )
+    if pretrained:
+        init_pretrained_weights(model, model_urls["resnet50"])
+    return model
+
+
+def resnet152_fc512(num_classes, loss={"xent"}, pretrained=True, **kwargs):
+    model = ResNet(
+        num_classes=num_classes,
+        loss=loss,
+        block=Bottleneck,
+        layers=[3, 8, 36, 3],
         last_stride=1,
         fc_dims=[512],
         dropout_p=None,
