@@ -7,8 +7,11 @@
 # --------------------------------------------
 # Executable and its arguments
 executable    = /usr/bin/rsync
-arguments     = -a -v /vol/research/path/to/data_source /mnt/fast/nobackup/path/to/data_destination
-environment   = "mount=/vol/research/path/to/data_source"
+arguments     = -a -v /vol/research/diffusionModels_NAS/miniconda3 /mnt/fast/nobackup/users/nt00601/miniconda3
+environment   = "mount=/vol/research/diffusionModels_NAS/miniconda3" 
+#arguments     = -a -v /vol/research/path/to/data_source /mnt/fast/nobackup/path/to/data_destination
+#environment   = "mount=/vol/research/path/to/data_source" 
+
 
 # --------------------------------------------
 # Input, Output and Log files
