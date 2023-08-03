@@ -151,6 +151,7 @@ class ResNet(nn.Module):
 
     def _make_layer(self, block, planes, blocks, stride=1):
         downsample = None
+        # This says, unless we do fc_dims[512] OR in_channels = out_channels = 64 for Conv2d, always downsample
         if stride != 1 or self.inplanes != planes * block.expansion:
             downsample = nn.Sequential(
                 nn.Conv2d(
