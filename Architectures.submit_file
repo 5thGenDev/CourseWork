@@ -6,14 +6,16 @@
 
 #---------------------------------------------
 # Name your batch so it's easy to distinguish in condor_q.
-JobBatchName = "Train-ResNet50"
+JobBatchName = "Train-Different-Architectures"
 
 # --------------------------------------------
-# Executable
-executable   = /mnt/fast/nobackup/users/nt00601/miniconda3/bin/python
+# Executable: Choose cu version depends on docker_image
+executable   = /mnt/fast/nobackup/users/nt00601/miniconda3/envs/cu118_py311/bin/python
+# executable   = /mnt/fast/nobackup/users/nt00601/miniconda3/envs/cu117_py311/bin/python
 
 # ---------------------------------------------------
-# Universe (vanilla, docker)
+# Universe (vanilla, docker): Choose CUDADriverVersion depends on what's shown on condor_status 
+# see https://docs.pages.surrey.ac.uk/research_computing/condor/tips.html#cuda-requirements
 universe     = docker
 docker_image = nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 #docker_image = nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
@@ -44,7 +46,7 @@ MaxJobRetirementTime = 0
 # -----------------------------------
 arguments = $(script) -i $(path) -p 10
 
-script = $ENV(PWD)/nnunet/experiment_planning/nnUNet_convert_decathlon_task.py
+script = $
 path = /mnt/fast/nobackup/users/nt00601/Task05_Prostate
 queue 1
 
