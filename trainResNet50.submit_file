@@ -1,0 +1,86 @@
+####################
+#
+# Example Job for HTCondor
+#
+####################
+
+#---------------------------------------------
+# Name your batch so it's easy to distinguish in the q.
+JobBatchName = "Train ResNet50"
+
+# --------------------------------------------
+# Executable
+executable   = /vol/research/diffusionModels_NAS/nnUNet/miniconda3/bin/python
+
+# ---------------------------------------------------
+# Universe (vanilla, docker)
+universe     = docker
+docker_image = nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
+
+# -------------------------------------------------
+# Event, out and error logs
+log    = c$(cluster).p$(process).log
+output = c$(cluster).p$(process).out
+error  = c$(cluster).p$(process).error
+
+# Mount project space containing Anaconda env and the code
+# No need this section if already used weka.submit_file
+environment = "mount=$ENV(PWD)"
+
+# --------------------------------------
+# Resources
+request_CPUs   = 2
+request_memory = 15G
+
+#This job will complete in less than 1 hour
++JobRunTime = 1
+
+#This job can checkpoint
++CanCheckpoint = true
+
+# Request for guaranteed run time(measured in s to match epoch runtime). 0 mean job is happy to checkpoint and move at any time.
+# This lets Condor remove our job ASAP if a machine needs rebooting. Useful when we can checkpoint and restore
+MaxJobRetirementTime = 0
+
+# -----------------------------------
+arguments = $(script) -i $(path) -p 10
+
+script = $ENV(PWD)/nnunet/experiment_planning/nnUNet_convert_decathlon_task.py
+path = /mnt/fast/nobackup/users/nt00601/Task05_Prostate
+queue 1
+
+
+# -----------------------------------
+arguments = $(script) -t $(task_id)
+
+script = $ENV(PWD)/nnunet/experiment_planning/nnUNet_plan_and_preprocess.py
+task_id = 5
+queue 1
+
+
+# -----------------------------------
+arguments = $(script) $(network) $(network_trainer) $(task_id) $(fold)
+
+script = $ENV(PWD)/nnunet/run/run_searching.py
+network = 2d
+network_trainer = AdwUNetTrainer_search
+fold = all
+
+# -------------------------------------
+# Request GPU mememory inbetween 7Gb and 14Gb
+requirements = 	(CUDAGlobalMemoryMb > 17000) && (CUDAGlobalMemoryMb < 27000) && \ 
+				(HasWeka) && (HasStornext) && \
+               	(CUDACapability > 8.0) 
+
+# --------------------------------------
+# Resources
+request_GPUs   = 5
+# this needs to be specified for the AI@Surrey cluster if requesting a GPU
++GPUMem        = 24000
+request_CPUs   = 10
+request_memory = 15G
+
+#This job will complete in less than 10 hour
++JobRunTime = 10
+
+queue 1
