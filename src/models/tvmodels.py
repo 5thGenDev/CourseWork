@@ -2,7 +2,7 @@
 
 import torch.nn as nn
 import torchvision.models as tvmodels
-
+from torchvision.models import MobileNet_V3_Small_Weights.IMAGENET1K_V1, VGG16_BN_Weights.IMAGENET1K_V1
 
 __all__ = ["mobilenet_v3_small", "vgg16"]
 
