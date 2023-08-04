@@ -57,7 +57,7 @@ class RandomErasing:
     """
 
     def __init__(
-        self, probability=0.5, sl=0.02, sh=0.4, r1=0.3, mean=[0.4914, 0.4822, 0.4465]
+        self, probability=0.1, sl=0.02, sh=0.4, r1=0.3, mean=[0.4914, 0.4822, 0.4465]
     ):
         self.probability = probability
         self.mean = mean
