@@ -19,12 +19,15 @@ __all__ = [
     "resnet152_fc512",
 ]
 
+# Pretrained models from PyTorch new training recipe: https://pytorch.org/blog/how-to-train-state-of-the-art-models-using-torchvision-latest-primitives/
+# Only resnet50/101/152 benefits this new recipe
+# 
 model_urls = {
     "resnet18": "https://download.pytorch.org/models/resnet18-5c106cde.pth",
     "resnet34": "https://download.pytorch.org/models/resnet34-333f7ec4.pth",
-    "resnet50": "https://download.pytorch.org/models/resnet50-19c8e357.pth",
-    "resnet101": "https://download.pytorch.org/models/resnet101-5d3b4d8f.pth",
-    "resnet152": "https://download.pytorch.org/models/resnet152-b121ed2d.pth",
+    "resnet50": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+    "resnet101": "https://download.pytorch.org/models/resnet101-cd907fc2.pth",
+    "resnet152": "https://download.pytorch.org/models/resnet152-f82ba261.pth",
 }
 
 
