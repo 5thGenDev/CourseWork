@@ -10,13 +10,23 @@ def init_lr_scheduler(
     gamma=0.1,  # learning rate decay
     epochs,
 ):
+    '''
+    Read this line of code: https://github.com/pytorch/vision/blob/main/references/classification/train.py#L304
+    and: https://pytorch.org/blog/how-to-train-state-of-the-art-models-using-torchvision-latest-primitives/#lr-optimizations
+    '''
+    lr_warmup_epochs = 5
+    lr_warmup_decay = 0.01
     warmup_lr_scheduler = = torch.optim.lr_scheduler.LinearLR(
-        optimizer, start_factor=0.01, total_iters=5
+        optimizer, start_factor=lr_warmup_decay, total_iters=lr_warmup_epochs
     )
+
+    '''
+    Read this line of code: https://github.com/pytorch/vision/blob/main/references/classification/train.py#L291
+    and: https://pytorch.org/blog/how-to-train-state-of-the-art-models-using-torchvision-latest-primitives/#:~:text=decaying%20the%20LR%20up%20to%20zero
+    '''
     main_lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-        optimizer, T_max=epochs - 5, eta_min=args.lr_min
+        optimizer, T_max=epochs - lr_warmup_epochs, eta_min=0
     )
-    # what is lr_min????
     
     if lr_scheduler == "single_step":
         return torch.optim.lr_scheduler.StepLR(
@@ -30,7 +40,7 @@ def init_lr_scheduler(
 
     elif lr_scheduler == "sequential":
         lr_scheduler = torch.optim.lr_scheduler.SequentialLR(
-            optimizer, schedulers=[warmup_lr_scheduler, main_lr_scheduler], milestones=[5]
+            optimizer, schedulers=[warmup_lr_scheduler, main_lr_scheduler], milestones=[lr_warmup_epochs]
         )
     else:
         raise ValueError(f"Unsupported lr_scheduler: {lr_scheduler}")
