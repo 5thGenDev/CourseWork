@@ -6,7 +6,7 @@
 
 #---------------------------------------------
 # Name your batch so it's easy to distinguish in condor_q.
-JobBatchName = "Pretrained-Architecture-in-Finetuning-mode"
+JobBatchName = "Finetune-Architecture-and-Eval"
 
 # --------------------------------------------
 # Executable: Choose cu version depends on docker_image
@@ -48,10 +48,10 @@ request_memory 	= 15G
 MaxJobRetirementTime = 0
 
 # -----------------------------------
-arguments = $(script) -s veri -t veri -a $(a) --root $(root) --height 224 --width 224 --optim amsgrad --lr 0.0003 --max-epoch 300 --stepsize 20 40 --train-batch-size 128 --test-batch-size 100 --save-dir $(save)
+arguments = $(script) -s veri -t veri -a $(a) --root $(root) --height 224 --width 224 --optim sgd --lr 0.5 --weight-decay 2e-05 --lr-scheduler sequential --label-smooth --max-epoch 300 --train-batch-size 128 --test-batch-size 100 --save-dir $(save)
 
 root = /mnt/fast/nobackup/users/nt00601/content
-save = /mnt/fast/nobackup/users/nt00601/CourseWork/logs/Architectures/train
+save = /mnt/fast/nobackup/users/nt00601/CourseWork/logs/Architectures/Finetune
 script = /mnt/fast/nobackup/users/nt00601/CourseWork/main.py
 
 queue 1 a in resnet50, resnet50_fc512, resnet101, resnet50_fc512, resnet101_fc512, resnet152_fc512
