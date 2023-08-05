@@ -8,7 +8,7 @@ def init_lr_scheduler(
     lr_scheduler="multi_step",  # learning rate scheduler
     stepsize=[20, 40],  # step size to decay learning rate
     gamma=0.1,  # learning rate decay
-    epochs,
+    epochs=600,
 ):
     '''
     Read this line of code: https://github.com/pytorch/vision/blob/main/references/classification/train.py#L304
