@@ -16,7 +16,7 @@ def init_lr_scheduler(
     '''
     lr_warmup_epochs = 5
     lr_warmup_decay = 0.01
-    warmup_lr_scheduler = = torch.optim.lr_scheduler.LinearLR(
+    warmup_lr_scheduler = torch.optim.lr_scheduler.LinearLR(
         optimizer, start_factor=lr_warmup_decay, total_iters=lr_warmup_epochs
     )
 
