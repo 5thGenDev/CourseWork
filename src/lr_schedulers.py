@@ -5,7 +5,7 @@ import torch
 
 def init_lr_scheduler(
     optimizer,
-    lr_scheduler="multi_step",  # learning rate scheduler
+    lr_scheduler,  # learning rate scheduler
     stepsize=[20, 40],  # step size to decay learning rate
     gamma=0.1,  # learning rate decay
     epochs=600,
