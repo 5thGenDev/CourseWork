@@ -48,7 +48,7 @@ request_memory 	= 26G
 MaxJobRetirementTime = 0
 
 # -----------------------------------
-arguments = $(script) -s veri -t veri --use-avai-gpus --workers 16 -a $(a) --root $(root) --height 224 --width 224 --random-erase --optim sgd --lr 0.5 --weight-decay 2e-05 --lr-scheduler sequential --label-smooth --max-epoch 600 --train-batch-size 128 --test-batch-size 100 --save-dir $(save)
+arguments = $(script) -s veri -t veri --use-avai-gpus --workers 16 -a $(a) --root $(root) --height 224 --width 224 --random-erase --optim sgd --lr 0.5 --weight-decay 2e-05 --lr-scheduler sequential --label-smooth --max-epoch 60 --train-batch-size 128 --test-batch-size 100 --save-dir $(save)
 
 root = /mnt/fast/nobackup/users/nt00601/content
 save = /mnt/fast/nobackup/users/nt00601/CourseWork/logs/$(a)/Finetune
