@@ -23,6 +23,7 @@ docker_image = nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
 # -------------------------------------------------
 # Event, out and error logs
+log    = c$(cluster).p$(process).log
 error  = c$(cluster).p$(process).error
 
 # --------------------------------------
@@ -54,4 +55,4 @@ root = /mnt/fast/nobackup/users/nt00601/content
 save = /mnt/fast/nobackup/users/nt00601/CourseWork-GCPR/logs/$(a)
 script = /mnt/fast/nobackup/users/nt00601/CourseWork-GCPR/main.py
 
-queue 1 a in resnet50, resnet50_fc512, resnet101, resnet50_fc512, resnet101_fc512, resnet152_fc512
+queue 1 a in resnet50, resnet152, resnet50_fc512, resnet152_fc512
