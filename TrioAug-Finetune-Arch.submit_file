@@ -32,7 +32,7 @@ requirements = (CUDAGlobalMemoryMb > 20000) && (CUDAGlobalMemoryMb <  75000) && 
                (HasWeka)
 
 # Resources
-request_GPUs 	= 4
+request_GPUs 	= 2
 +GPUMem 	= 24000
 request_CPUs   	= 1
 request_memory 	= 26G
