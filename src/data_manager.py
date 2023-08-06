@@ -107,7 +107,7 @@ class ImageDataManager(BaseDataManager):
             num_instances=self.num_instances,
         )
         self.trainloader = DataLoader(
-            ImageDataset(train, transform=self.transform_train),
+            ImageDataset(train),
             sampler=self.train_sampler,
             batch_size=self.train_batch_size,
             shuffle=False,
@@ -128,7 +128,7 @@ class ImageDataManager(BaseDataManager):
             dataset = init_imgreid_dataset(root=self.root, name=name)
 
             self.testloader_dict[name]["query"] = DataLoader(
-                ImageDataset(dataset.query, transform=self.transform_test),
+                ImageDataset(dataset.query),
                 batch_size=self.test_batch_size,
                 shuffle=False,
                 num_workers=self.workers,
@@ -137,7 +137,7 @@ class ImageDataManager(BaseDataManager):
             )
 
             self.testloader_dict[name]["gallery"] = DataLoader(
-                ImageDataset(dataset.gallery, transform=self.transform_test),
+                ImageDataset(dataset.gallery),
                 batch_size=self.test_batch_size,
                 shuffle=False,
                 num_workers=self.workers,
