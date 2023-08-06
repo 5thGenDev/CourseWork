@@ -39,7 +39,7 @@ def init_lr_scheduler(
         )
 
     elif lr_scheduler == "sequential":
-        lr_scheduler = torch.optim.lr_scheduler.SequentialLR(
+        return torch.optim.lr_scheduler.SequentialLR(
             optimizer, schedulers=[warmup_lr_scheduler, main_lr_scheduler], milestones=[lr_warmup_epochs]
         )
     else:
