@@ -51,7 +51,7 @@ MaxJobRetirementTime = 0
 arguments = $(script) -s veri -t veri --use-avai-gpus --workers 16 -a $(a) --root $(root) --height 224 --width 224 --random-erase --color-aug --optim sgd --lr 0.5 --weight-decay 2e-05 --lr-scheduler sequential --label-smooth --max-epoch 600 --train-batch-size 128 --test-batch-size 100 --save-dir $(save)
 
 root = /mnt/fast/nobackup/users/nt00601/content
-save = /mnt/fast/nobackup/users/nt00601/CourseWork/logs/ColorAug/Finetune
-script = /mnt/fast/nobackup/users/nt00601/CourseWork/main.py
+save = /mnt/fast/nobackup/users/nt00601/CourseWork-DataAugment/logs/ColorAug/Finetune
+script = /mnt/fast/nobackup/users/nt00601/CourseWork-DataAugment/main.py
 
 queue 1 a in resnet50, resnet50_fc512, resnet101, resnet50_fc512, resnet101_fc512, resnet152_fc512
