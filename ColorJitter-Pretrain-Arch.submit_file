@@ -35,7 +35,7 @@ requirements = (CUDAGlobalMemoryMb > 20000) && (CUDAGlobalMemoryMb <  75000) && 
 request_GPUs 	= 4
 +GPUMem 	= 24000
 request_CPUs   	= 1
-request_memory 	= 15G
+request_memory 	= 26G
 
 #This job will complete in less than 1 hour
 +JobRunTime = 4
