@@ -4,7 +4,6 @@ import os.path as osp
 
 from PIL import Image
 from torch.utils.data import Dataset
-from src.multimodal import Fuse_RGB_Gray_Sketch
 
 def read_image(img_path):
     """Keep reading image until succeed.
@@ -40,6 +39,5 @@ class ImageDataset(Dataset):
 
         if self.transform is not None:
             img = self.transform(img)
-        else:
-            img = Fuse_RGB_Gray_Sketch(img_path)
+
         return img, pid, camid, img_path
