@@ -23,6 +23,7 @@ docker_image = nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
 # -------------------------------------------------
 # Event, out and error logs
+log    = c$(cluster).p$(process).log
 error  = c$(cluster).p$(process).error
 
 # --------------------------------------
