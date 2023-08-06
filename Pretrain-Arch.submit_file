@@ -6,7 +6,7 @@
 
 #---------------------------------------------
 # Name your batch so it's easy to distinguish in condor_q.
-JobBatchName = "Pretrain-Architecture-and-Eval"
+JobBatchName = "TrioAug-Pretrain-Architecture-and-Eval"
 
 # --------------------------------------------
 # Executable: Choose cu version depends on docker_image
