@@ -28,12 +28,12 @@ error  = c$(cluster).p$(process).error
 # --------------------------------------
 # GPU, Storage and CUDA Requirements for the Job 
 # All of these requirements say: We are using rtx2080 or rtx3090
-requirements = (CUDAGlobalMemoryMb > 10000) && (CUDAGlobalMemoryMb <  75000) && (CUDACapability > 7) && \
+requirements = (CUDAGlobalMemoryMb > 20000) && (CUDAGlobalMemoryMb <  75000) && (CUDACapability > 7) && \
                (HasWeka)
 
 # Resources
 request_GPUs 	= 4
-+GPUMem 	= 10000
++GPUMem 	= 24000
 request_CPUs   	= 1
 request_memory 	= 15G
 
