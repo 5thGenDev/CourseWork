@@ -306,7 +306,7 @@ def lr_scheduler_kwargs(parsed_args):
     """
     return {
         "lr_scheduler": parsed_args.lr_scheduler,
+        "epochs": parsed_args.max_epoch,
         "stepsize": parsed_args.stepsize,
         "gamma": parsed_args.gamma,
-        "epochs": parsed_args.max_epoch,
     }
