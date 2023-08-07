@@ -135,7 +135,7 @@ def main():
 
         if (
             (epoch + 1) > args.start_eval
-            and args.eval_freq > 0
+            #and args.eval_freq > 0
             and (epoch + 1) % args.eval_freq == 0
             or (epoch + 1) == args.max_epoch
         ):
