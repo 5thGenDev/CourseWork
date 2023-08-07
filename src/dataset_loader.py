@@ -41,5 +41,5 @@ class ImageDataset(Dataset):
         if self.transform is not None:
             img = self.transform(img)
         else:
-            img = Fuse_RGB_Gray_Sketch(img_path)
+            img = Fuse_RGB_Gray_Sketch(Image.open(img_path))
         return img, pid, camid, img_path
