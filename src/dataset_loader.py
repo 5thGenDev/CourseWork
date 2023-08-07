@@ -14,7 +14,7 @@ def read_image(img_path):
         raise OSError(f"{img_path} does not exist")
     while not got_img:
         try:
-            img = Image.open(img_path).convert("RGB")
+            img = Fuse_RGB_Gray_Sketch(Image.open(img_path))
             got_img = True
         except OSError:
             print(
@@ -27,9 +27,8 @@ def read_image(img_path):
 class ImageDataset(Dataset):
     """Image Person ReID Dataset"""
 
-    def __init__(self, dataset, transform=None):
+    def __init__(self, dataset):
         self.dataset = dataset
-        self.transform = transform
 
     def __len__(self):
         return len(self.dataset)
@@ -37,9 +36,4 @@ class ImageDataset(Dataset):
     def __getitem__(self, index):
         img_path, pid, camid = self.dataset[index]
         img = read_image(img_path)
-
-        if self.transform is not None:
-            img = self.transform(img)
-        else:
-            img = Fuse_RGB_Gray_Sketch(Image.open(img_path))
         return img, pid, camid, img_path
