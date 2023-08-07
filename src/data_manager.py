@@ -20,9 +20,6 @@ class BaseDataManager:
         test_batch_size=100,
         workers=4,
         train_sampler="",
-        random_erase=False,  # use random erasing for data augmentation
-        color_jitter=False,  # randomly change the brightness, contrast and saturation
-        color_aug=False,  # randomly alter the intensities of RGB channels
         num_instances=4,  # number of instances per identity (for RandomIdentitySampler)
         **kwargs,
     ):
@@ -36,9 +33,6 @@ class BaseDataManager:
         self.test_batch_size = test_batch_size
         self.workers = workers
         self.train_sampler = train_sampler
-        self.random_erase = random_erase
-        self.color_jitter = color_jitter
-        self.color_aug = color_aug
         self.num_instances = num_instances
 
     @property
