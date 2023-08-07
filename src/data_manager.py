@@ -5,7 +5,6 @@ from torch.utils.data import DataLoader
 from .dataset_loader import ImageDataset
 from .datasets import init_imgreid_dataset
 from .samplers import build_train_sampler
-from .transforms import build_transforms
 
 
 class BaseDataManager:
@@ -41,16 +40,6 @@ class BaseDataManager:
         self.color_jitter = color_jitter
         self.color_aug = color_aug
         self.num_instances = num_instances
-
-        transform_train, transform_test = build_transforms(
-            self.height,
-            self.width,
-            random_erase=self.random_erase,
-            color_jitter=self.color_jitter,
-            color_aug=self.color_aug,
-        )
-        self.transform_train = transform_train
-        self.transform_test = transform_test
 
     @property
     def num_train_pids(self):
