@@ -39,7 +39,7 @@ request_CPUs   	= 1
 request_memory 	= 26G
 
 #This job will complete in less than 1 hour
-+JobRunTime = 6
++JobRunTime = 4
 
 #This job can checkpoint
 +CanCheckpoint = true
