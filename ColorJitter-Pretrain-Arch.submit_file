@@ -10,8 +10,8 @@ JobBatchName = "ColorJitter-Pretrain-Architecture-and-Eval"
 
 # --------------------------------------------
 # Executable: Choose cu version depends on docker_image
-executable   = /mnt/fast/nobackup/users/nt00601/miniconda3/envs/cu118_py311/bin/python
-# executable   = /mnt/fast/nobackup/users/nt00601/miniconda3/envs/cu117_py311/bin/python
+#!/vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python
+executable = /vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python
 
 # ---------------------------------------------------
 # Universe (vanilla, docker): Choose CUDADriverVersion depends on what's shown on condor_status 
