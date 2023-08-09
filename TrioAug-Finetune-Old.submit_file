@@ -1,3 +1,4 @@
+#!/vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python3.11
 ####################
 #
 # Example Job for HTCondor
@@ -6,12 +7,11 @@
 
 #---------------------------------------------
 # Name your batch so it's easy to distinguish in condor_q.
-JobBatchName = "Trio-Finetune-Architecture-and-Eval"
+JobBatchName = "Trio-Finetune-Old-Hparams"
 
 # --------------------------------------------
 # Executable: Choose cu version depends on docker_image
-#!/vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python
-executable = /vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python
+executable = /vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python3.11
 
 # ---------------------------------------------------
 # Universe (vanilla, docker): Choose CUDADriverVersion depends on what's shown on condor_status 
