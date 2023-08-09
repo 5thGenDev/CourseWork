@@ -20,16 +20,16 @@ __all__ = [
 ]
 
 '''
-Pretrained models from PyTorch new training recipe: https://pytorch.org/blog/how-to-train-state-of-the-art-models-using-torchvision-latest-primitives/
-Only resnet50, 101, 152 benefits from new training recipe
+Pretrained models with new training recipe: https://pytorch.org/blog/how-to-train-state-of-the-art-models-using-torchvision-latest-primitives/
+Only resnet50, 101, 152 benefit new training recipe
 "https" leads to handshake error, fix with https://github.com/pytorch/pytorch/issues/2271
 '''
 model_urls = {
     "resnet18": "http://download.pytorch.org/models/resnet18-5c106cde.pth",
     "resnet34": "http://download.pytorch.org/models/resnet34-333f7ec4.pth",
-    "resnet50": "http://download.pytorch.org/models/resnet50-11ad3fa6.pth",
-    "resnet101": "http://download.pytorch.org/models/resnet101-cd907fc2.pth",
-    "resnet152": "http://download.pytorch.org/models/resnet152-f82ba261.pth",
+    "resnet50": "http://download.pytorch.org/models/resnet50-0676ba61.pth",
+    "resnet101": "http://download.pytorch.org/models/resnet101-63fe2227.pth",
+    "resnet152": "http://download.pytorch.org/models/resnet152-394f9c45.pth",
 }
 
 
