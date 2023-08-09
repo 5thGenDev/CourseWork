@@ -1,3 +1,4 @@
+#!/vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python3.11
 ####################
 #
 # Example Job for HTCondor
@@ -10,8 +11,7 @@ JobBatchName = "ColorAug-Pretrain-Architecture-and-Eval"
 
 # --------------------------------------------
 # Executable: Choose cu version depends on docker_image
-#!/vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python
-executable = /vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python
+executable = /vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python3.11
 
 # ---------------------------------------------------
 # Universe (vanilla, docker): Choose CUDADriverVersion depends on what's shown on condor_status 
