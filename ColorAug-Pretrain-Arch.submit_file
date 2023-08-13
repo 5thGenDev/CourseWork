@@ -1,4 +1,3 @@
-#!/vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python3.11
 ####################
 #
 # Example Job for HTCondor
@@ -11,7 +10,7 @@ JobBatchName = "ColorAug-Pretrain-Architecture-and-Eval"
 
 # --------------------------------------------
 # Executable: Choose cu version depends on docker_image
-executable = /vol/research/diffusionModels_NAS/miniconda3/envs/cu118_py311/bin/python3.11
+executable = /mmt/fast/nobackup/users/nt00601/miniconda3/envs/cu118_py311/bin/python3.11
 
 # ---------------------------------------------------
 # Universe (vanilla, docker): Choose CUDADriverVersion depends on what's shown on condor_status 
@@ -49,7 +48,7 @@ request_memory 	= 26G
 MaxJobRetirementTime = 0
 
 # -----------------------------------
-arguments = $(script) -s veri -t veri --use-avai-gpus --workers 8 --workers 16 -a $(a) --no-pretrained --root $(root) --height 224 --width 224 --color-aug --optim sgd --lr 0.5 --weight-decay 2e-05 --lr-scheduler sequential --label-smooth --max-epoch 60 --train-batch-size 128 --test-batch-size 100 --save-dir $(save)
+arguments = $(script) -s veri -t veri --use-avai-gpus --workers 8 --workers 16 -a $(a) --no-pretrained --root $(root) --height 224 --width 224 --color-aug --optim sgd --lr 0.5 --weight-decay 2e-05 --lr-scheduler sequential --label-smooth --max-epoch 10 --train-batch-size 128 --test-batch-size 100 --save-dir $(save)
 
 root = /mnt/fast/nobackup/users/nt00601/content
 save = /mnt/fast/nobackup/users/nt00601/CourseWork-main/logs/$(a)/Pretrain/ColorAug
