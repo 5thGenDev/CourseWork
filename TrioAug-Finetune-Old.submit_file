@@ -10,7 +10,7 @@ JobBatchName = "Trio-Finetune-Old-Hparams"
 
 # --------------------------------------------
 # Executable: Choose cu version depends on docker_image
-executable = /mmt/fast/nobackup/users/nt00601/miniconda3/envs/cu118_py311/bin/python3.11
+executable = /mnt/fast/nobackup/users/nt00601/miniconda3/envs/cu118_py311/bin/python3.11
 
 # ---------------------------------------------------
 # Universe (vanilla, docker): Choose CUDADriverVersion depends on what's shown on condor_status 
